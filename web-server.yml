@@ -1,0 +1,27 @@
+---
+- name: web server
+  hosts: localhost
+  sudo: True
+  tasks:
+   - name: install nginx
+     apt: name=nginx update_cache=yes
+   - name: install git
+     apt: name=git     
+   - name: install nginx conf
+   - name: nginx core config
+     git: repo=git://github.com/idguk/nginx/nginx.conf dest=/etc/nginx/nginx.conf update=yes
+#   - name: Install docker-py
+#     pip: name=docker-py
+   - name: railo docker
+     docker:
+       name: railo 
+       image: idguk/railoexpress
+       pull: always
+       ports: "8888:8888"
+       state: started
+        #expose:
+        #- 8888
+       volumes:
+          - "/var/www/pca:/var/railo/webapps/ROOT" 
+          - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
+#   - name: create www dir
