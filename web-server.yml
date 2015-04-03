@@ -16,6 +16,8 @@
      service: name=nginx state=restarted
 #   - name: Install docker-py
 #     pip: name=docker-py
+   - name: checkout site code
+   
    - name: railo docker
      docker:
        name: railo 
@@ -26,6 +28,6 @@
         #expose:
         #- 8888
        volumes:
-          - "/var/www/pca:/var/railo/webapps/ROOT" 
+          - "/var/www/site:/var/railo/webapps/ROOT" 
           - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
 #   - name: create www dir
