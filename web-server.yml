@@ -16,8 +16,10 @@
      service: name=nginx state=restarted
 #   - name: Install docker-py
 #     pip: name=docker-py
-   - name: checkout site code
-   
+   - name: checkout shared
+     git: repo=git://github.com/idguk/shared-coldfusion.git dest=/var/www/sharedresources/ update=yes
+   - name: checkout site
+     git: repo=git://github.com/idguk/site-pca dest=/var/www/site/ update=yes
    - name: railo docker
      docker:
        name: railo 
