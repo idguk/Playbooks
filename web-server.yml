@@ -8,8 +8,12 @@
    - name: install git
      apt: name=git     
    - name: install nginx conf
-   - name: nginx core config
-     git: repo=git://github.com/idguk/nginx/nginx.conf dest=/etc/nginx/nginx.conf update=yes
+   - name: checkout nginx config
+     git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes
+   - name: update nginx config
+     copy: src=/tmp/nginx/nginx.conf dest=/etc/nginx/nginx.conf
+   - name: restart nginx
+     service: name=nginx state=restarted
 #   - name: Install docker-py
 #     pip: name=docker-py
    - name: railo docker
