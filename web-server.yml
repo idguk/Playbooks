@@ -23,7 +23,7 @@
    - name: checkout site
      git: repo=git://github.com/idguk/site-{{site_prefix}} dest=/var/www/{{site_prefix}}/ update=yes accept_hostkey=yes
    - name: copy nginx conf
-     copy: src=/var/www/{{site_prefix}}/nginx.conf dest=/ect/nginx/conf.d/{{site_prefix}}.conf 
+     copy: src=/var/www/{{site_prefix}}/nginx.conf dest=/etc/nginx/conf.d/{{site_prefix}}.conf 
    - name: railo docker
      docker:
        name: railo 
