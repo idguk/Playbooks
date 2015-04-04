@@ -1,6 +1,6 @@
 ---
 - name: web server
-  hosts: localhost
+  hosts: 127.0.0.1
   sudo: True
   tasks:
    - name: install nginx
