@@ -6,16 +6,13 @@
    - name: install nginx
      apt: name=nginx update_cache=yes
    - name: install git
-     apt: name=git     
-   - name: install nginx conf
+     apt: name=git
    - name: checkout nginx config
      git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes
    - name: update nginx config
      copy: src=/tmp/nginx/nginx.conf dest=/etc/nginx/nginx.conf
    - name: restart nginx
      service: name=nginx state=restarted
-#   - name: Install docker-py
-#     pip: name=docker-py
    - name: checkout shared
      git: repo=git://github.com/idguk/shared-coldfusion.git dest=/var/www/sharedresources/ update=yes
    - name: checkout site
