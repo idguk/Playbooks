@@ -13,8 +13,6 @@
      git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes accept_hostkey=yes
    - name: update nginx config
      copy: src=/tmp/nginx/nginx.conf dest=/etc/nginx/nginx.conf
-   - name: restart nginx
-     service: name=nginx state=restarted
 #docker-py needed for docker client
    - name: install docker py
      pip: name=docker-py
@@ -24,6 +22,8 @@
      git: repo=git://github.com/idguk/site-{{site_prefix}} dest=/var/www/{{site_prefix}}/ update=yes accept_hostkey=yes
    - name: copy nginx conf
      copy: src=/var/www/{{site_prefix}}/nginx.conf dest=/etc/nginx/conf.d/{{site_prefix}}.conf 
+   - name: restart nginx
+     service: name=nginx state=restarted
    - name: railo docker
      docker:
        name: railo 
