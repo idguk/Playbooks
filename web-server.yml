@@ -2,6 +2,8 @@
 - name: web server
   hosts: localhost
   sudo: True
+  vars:
+    site_prefix: pca
   tasks:
    - name: install nginx
      apt: name=nginx update_cache=yes
@@ -19,7 +21,9 @@
    - name: checkout shared
      git: repo=git://github.com/idguk/shared-coldfusion.git dest=/var/www/sharedresources/ update=yes accept_hostkey=yes
    - name: checkout site
-     git: repo=git://github.com/idguk/site-pca dest=/var/www/site/ update=yes accept_hostkey=yes
+     git: repo=git://github.com/idguk/site-{{site_prefix}} dest=/var/www/site/ update=yes accept_hostkey=yes
+   - name: copy nginx conf
+     copy: src=/var/www/site/nginx.conf dest=/ect/nginx/conf.d/{{site_prefix}}.conf 
    - name: railo docker
      docker:
        name: railo 
@@ -32,4 +36,3 @@
        volumes:
           - "/var/www/site:/var/railo/webapps/ROOT" 
           - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
-#   - name: create www dir
