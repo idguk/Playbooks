@@ -8,15 +8,15 @@
    - name: install git
      apt: name=git
    - name: checkout nginx config
-     git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes
+     git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes accept_hostkey=yes
    - name: update nginx config
      copy: src=/tmp/nginx/nginx.conf dest=/etc/nginx/nginx.conf
    - name: restart nginx
      service: name=nginx state=restarted
    - name: checkout shared
-     git: repo=git://github.com/idguk/shared-coldfusion.git dest=/var/www/sharedresources/ update=yes
+     git: repo=git://github.com/idguk/shared-coldfusion.git dest=/var/www/sharedresources/ update=yes accept_hostkey=yes
    - name: checkout site
-     git: repo=git://github.com/idguk/site-pca dest=/var/www/site/ update=yes
+     git: repo=git://github.com/idguk/site-pca dest=/var/www/site/ update=yes accept_hostkey=yes
    - name: railo docker
      docker:
        name: railo 
