@@ -3,7 +3,7 @@
   hosts: localhost
   sudo: True
   vars:
-    site_prefix: pca
+    site_prefix: {{ ansible_local.site.info.prefix }}
   tasks:
    - name: install nginx
      apt: name=nginx update_cache=yes
