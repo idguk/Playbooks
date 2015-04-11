@@ -21,7 +21,7 @@
    - name: checkout shared
      git: repo=git://github.com/idguk/shared-coldfusion.git dest=/var/www/sharedresources/ update=yes accept_hostkey=yes
    - name: checkout site
-     git: repo=git://github.com/idguk/site-{{site_prefix}} dest=/var/www/{{site_prefix}}/ update=yes accept_hostkey=yes
+     git: repo=git@bitbucket.org:idguk/site-{{site_prefix}}.git dest=/var/www/{{site_prefix}}/ update=yes accept_hostkey=yes
    - name: copy nginx conf
      copy: src=/var/www/{{site_prefix}}/nginx.conf dest=/etc/nginx/conf.d/{{site_prefix}}.conf 
    - name: restart nginx
