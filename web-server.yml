@@ -38,7 +38,7 @@
           - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
    - name: railo docker 2
      docker:
-       name: railo1 
+       name: railo2 
        image: idguk/railoexpress
        pull: always
        ports: "8889:8888"
