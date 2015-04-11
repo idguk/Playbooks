@@ -6,7 +6,7 @@
     site_prefix: "{{ ansible_local.site.info.prefix }}"
   tasks:
    - name: include ssh keys
-      include_vars: ssh-vars.yml
+     include_vars: ssh-vars.yml
    - name: install nginx
      apt: name=nginx update_cache=yes
    - name: install git
