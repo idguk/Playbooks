@@ -7,6 +7,10 @@
   tasks:
    - name: include ssh keys
      include_vars: ssh-vars.yml
+   - name: copy private ssh key
+     copy: content="{{ private_key }}" dest=/root/.ssh/id_rsa mode=0600
+   - name: copy public ssh key
+     copy: content="{{ public_key }}" dest=/root/.ssh/id_rsa.pub mode=0644
    - name: install nginx
      apt: name=nginx update_cache=yes
    - name: install git
