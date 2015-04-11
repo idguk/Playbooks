@@ -26,15 +26,23 @@
      copy: src=/var/www/{{site_prefix}}/nginx.conf dest=/etc/nginx/conf.d/{{site_prefix}}.conf 
    - name: restart nginx
      service: name=nginx state=restarted
-   - name: railo docker
+   - name: railo docker 1
      docker:
-       name: railo 
+       name: railo1 
        image: idguk/railoexpress
        pull: always
        ports: "8888:8888"
        state: started
-        #expose:
-        #- 8888
+       volumes:
+          - "/var/www/{{site_prefix}}:/var/railo/webapps/ROOT" 
+          - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
+   - name: railo docker 2
+     docker:
+       name: railo1 
+       image: idguk/railoexpress
+       pull: always
+       ports: "8889:8888"
+       state: started
        volumes:
           - "/var/www/{{site_prefix}}:/var/railo/webapps/ROOT" 
           - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
