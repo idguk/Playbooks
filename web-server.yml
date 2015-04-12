@@ -14,7 +14,7 @@
    - name: replace line endings - pt 2
      replace: dest=/root/.ssh/id_rsa regexp='---- ' replace='----\n'
    - name: replace line endings - pt 3
-     replace: dest=/root/.ssh/id_rsa regexp=' ----' replace='\n----'   
+     replace: dest=/root/.ssh/id_rsa regexp=' ----' replace='\n----'
    - name: copy public ssh key
      copy: content="{{ public_key }}" dest=/root/.ssh/id_rsa.pub mode=0644
    - name: install nginx
