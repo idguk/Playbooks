@@ -21,6 +21,10 @@
      apt: name=nginx update_cache=yes
    - name: install git
      apt: name=git
+   - name: obsolete container
+     docker:
+       image: idguk/railoexpress
+       state: stopped  
    - name: checkout nginx config
      git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes accept_hostkey=yes
    - name: update nginx config
