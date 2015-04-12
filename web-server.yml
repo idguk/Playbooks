@@ -21,7 +21,7 @@
      apt: name=nginx update_cache=yes
    - name: install git
      apt: name=git
-   - name: obsolete container
+   - name: stop railo dockers
      docker:
        image: idguk/railoexpress
        state: stopped  
