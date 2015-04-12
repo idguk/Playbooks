@@ -21,10 +21,6 @@
      apt: name=nginx update_cache=yes
    - name: install git
      apt: name=git
-   - name: stop railo dockers
-     docker:
-       image: idguk/railoexpress
-       state: stopped  
    - name: checkout nginx config
      git: repo=git://github.com/idguk/nginx.git dest=/tmp/nginx/ update=yes accept_hostkey=yes
    - name: update nginx config
@@ -32,6 +28,10 @@
 #docker-py needed for docker client
    - name: install docker py
      pip: name=docker-py
+   - name: stop railo dockers
+     docker:
+       image: idguk/railoexpress
+       state: stopped     
    - name: checkout shared
      git: repo=git@bitbucket.org:idguk/sharedresources.git dest=/var/www/sharedresources/ update=yes accept_hostkey=yes
    - name: checkout site
