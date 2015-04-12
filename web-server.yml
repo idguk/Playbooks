@@ -32,8 +32,12 @@
      git: repo=git@bitbucket.org:idguk/sharedresources.git dest=/var/www/sharedresources/ update=yes accept_hostkey=yes
    - name: checkout site
      git: repo=git@bitbucket.org:idguk/site-{{site_prefix}}.git dest=/var/www/{{site_prefix}}/ update=yes accept_hostkey=yes
+   - name: remove existing WEB-INF
+     command: rm -rf /tmp/WEB-INF
    - name: checkout WEB-INF
-     git: repo=git@bitbucket.org:idguk/web-inf.git dest=/var/www/{{site_prefix}}/WEB-INF update=yes accept_hostkey=yes
+     git: repo=git@bitbucket.org:idguk/web-inf.git dest=/tmp/WEB-INF update=yes accept_hostkey=yes
+   - name: copy WEB-INF
+     copy: src=/tmp/WEB-INF dest=/var/www/{{site_prefix}}/   
    - name: copy nginx conf
      copy: src=/var/www/{{site_prefix}}/nginx.conf dest=/etc/nginx/conf.d/{{site_prefix}}.conf 
    - name: restart nginx
