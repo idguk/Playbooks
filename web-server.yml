@@ -56,17 +56,17 @@
        volumes:
           - "/var/www/{{site_prefix}}:/var/railo/webapps/ROOT" 
           - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
-   - name: railo docker 2
-     docker:
-       name: railo2 
-       image: idguk/railoexpress
-       pull: always
-       ports: "8889:8888"
-       state: started
-       volumes:
-          - "/var/www/{{site_prefix}}:/var/railo/webapps/ROOT" 
-          - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
+#  - name: railo docker 2
+#   docker:
+#       name: railo2 
+#       image: idguk/railoexpress
+#       pull: always
+#       ports: "8889:8888"
+#       state: started
+#       volumes:
+#          - "/var/www/{{site_prefix}}:/var/railo/webapps/ROOT" 
+#          - "/var/www/sharedresources/:/var/railo/webapps/sharedresources/"
    - name: call 8888 port docker
      get_url: url=http://localhost:8888 dest=/tmp/{{site_prefix}}-8888.html mode=0440
-   - name: call 8889 port docker
-     get_url: url=http://localhost:8889 dest=/tmp/{{site_prefix}}-8889.html mode=0440  
+#   - name: call 8889 port docker
+#     get_url: url=http://localhost:8889 dest=/tmp/{{site_prefix}}-8889.html mode=0440  
